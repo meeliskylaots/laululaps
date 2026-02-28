@@ -123,17 +123,17 @@
                     
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Laulja nimi *</label>
-                        <input type="text" name="name" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all">
+                        <input type="text" name="name" id="field_name" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all">
                     </div>
                     
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Sünniaeg (pp.kk.aaaa) *</label>
-                        <input type="text" name="birthdate" placeholder="01.01.2015" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="birthdate" id="field_birthdate" placeholder="01.01.2015" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Vanuserühm (seisuga 31.12.2026) *</label>
-                        <select name="ageGroup" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <select name="ageGroup" id="field_ageGroup" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                             <option value="">Vali...</option>
                             <option value="I rühm (3-7 a.)">I grupp: 3–7-aastased</option>
                             <option value="II rühm (8-10 a.)">II grupp: 8–10-aastased</option>
@@ -144,7 +144,7 @@
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Keda esindad (kool/stuudio) *</label>
-                        <input type="text" name="school" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="school" id="field_school" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                     </div>
 
                     <!-- Osa 2: Laul -->
@@ -157,27 +157,27 @@
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Laulu pealkiri *</label>
-                        <input type="text" name="song" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="song" id="field_song" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Laulu autorid *</label>
-                        <input type="text" name="author" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="author" id="field_author" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Laulu täpne pikkus *</label>
-                        <input type="text" name="duration" placeholder="nt 2:50" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="duration" id="field_duration" placeholder="nt 2:50" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Taustalauljad (nimed ja arv) *</label>
-                        <input type="text" name="backupSingers" placeholder="või 'Puuduvad'" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="backupSingers" id="field_backupSingers" placeholder="või 'Puuduvad'" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                     </div>
 
                     <div class="md:col-span-2 space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Saade ja vajalik lisatehnika *</label>
-                        <textarea name="accompaniment" rows="2" required placeholder="klaver, mitu mikrofoni jne" class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all"></textarea>
+                        <textarea name="accompaniment" id="field_accompaniment" rows="2" required placeholder="klaver, mitu mikrofoni jne" class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all"></textarea>
                     </div>
 
                     <!-- Fonogrammi üleslaadimine -->
@@ -197,12 +197,12 @@
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Juhendaja nimi *</label>
-                        <input type="text" name="teacherName" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="teacherName" id="field_teacherName" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Juhendaja kontakt (tel, e-post) *</label>
-                        <input type="text" name="teacherContact" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="teacherContact" id="field_teacherContact" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
                     </div>
 
                     <div class="md:col-span-2 pt-8">
@@ -219,12 +219,22 @@
                     <h3 class="text-3xl font-extrabold text-slate-900">Registreeritud!</h3>
                     <p class="text-slate-600 text-lg max-w-md mx-auto leading-relaxed">Suur aitäh! Sinu andmed ja fail on edukalt edastatud Sinu Google Sheetsi ja Drive'i.</p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                        <button id="downloadPdfBtn" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:bg-indigo-700 transition shadow-md flex items-center justify-center gap-2">
+                    <div class="flex flex-col gap-4 justify-center pt-4 max-w-sm mx-auto">
+                        <button id="downloadPdfBtn" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-700 transition shadow-md flex items-center justify-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                             Laadi alla PDF kinnitus
                         </button>
-                        <button onclick="location.reload()" class="bg-slate-100 text-slate-700 px-8 py-3 rounded-full font-bold hover:bg-slate-200 transition">Registreeri järgmine</button>
+                        
+                        <div class="h-px bg-slate-100 my-2"></div>
+                        
+                        <button id="regNextSameTeacher" class="bg-indigo-50 text-indigo-700 px-8 py-4 rounded-2xl font-bold hover:bg-indigo-100 transition border border-indigo-100 flex items-center justify-center gap-2">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                             Lisa samale juhendajale uus õpilane
+                        </button>
+                        
+                        <button onclick="location.reload()" class="text-slate-500 hover:text-slate-700 text-sm font-medium transition py-2">
+                             Alusta täiesti uut registreerimist
+                        </button>
                     </div>
                 </div>
             </div>
@@ -265,12 +275,14 @@
     </footer>
 
     <script>
+        // Sinu aktiivne Google Apps Script URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycby7EHGNIxvGTsdtfWVD_jZjl3dJSn_21XbEijn_kNhsARW_TGW9NkNTFFzYfxQJTcUheQ/exec';
 
         const form = document.getElementById('googleSheetForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMsg = document.getElementById('successMsg');
         const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+        const regNextSameTeacherBtn = document.getElementById('regNextSameTeacher');
         const audioInput = document.getElementById('audioFile');
 
         let lastSubmittedData = null;
@@ -325,6 +337,34 @@
             reader.readAsDataURL(file);
             reader.onload = () => resolve(reader.result);
             reader.onerror = error => reject(error);
+        });
+
+        // "Lisa samale juhendajale uus õpilane" loogika
+        regNextSameTeacherBtn.addEventListener('click', () => {
+            // Tühjendame ainult õpilase ja laulu väljad
+            const fieldsToClear = [
+                'field_name', 'field_birthdate', 'field_ageGroup', 
+                'field_song', 'field_author', 'field_duration', 
+                'field_backupSingers', 'field_accompaniment'
+            ];
+            
+            fieldsToClear.forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            
+            // Tühjendame failivaliku
+            audioInput.value = '';
+            
+            // Peidame eduteate ja näitame vormi
+            successMsg.classList.add('hidden');
+            form.classList.remove('hidden');
+            
+            // Taastame nupu oleku
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Kinnita registreerimine';
+            
+            // Kerime vormi algusesse
+            window.scrollTo({ top: document.getElementById('registreeri').offsetTop - 100, behavior: 'smooth' });
         });
 
         downloadPdfBtn.addEventListener('click', () => {
