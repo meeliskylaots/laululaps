@@ -54,7 +54,7 @@
             </h1>
 
             <div class="max-w-2xl mx-auto bg-white/10 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/20 shadow-2xl mb-12">
-                <p class="text-xl md:text-2xl mb-4 font-semibold text-white">Tule "Tartumaa laululaps 2026" eelvoorule!</p>
+                <p class="text-xl md:text-2xl mb-4 font-semibold text-white font-outfit">Tule "Tartumaa laululaps 2026" eelvoorule!</p>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-indigo-100 font-medium">
                     <div class="flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -72,8 +72,8 @@
             </div>
             
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="#registreeri" class="bg-white text-indigo-700 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-indigo-50 transition-all hover:scale-105 shadow-2xl">Registreeri siin</a>
-                <a href="https://docs.google.com/document/d/1hqLIVqfflw4a2zxmkZK0W4shnYkbegzB/edit?usp=drive_link&ouid=108559426715110697158&rtpof=true&sd=true" target="_blank" class="bg-indigo-600/40 text-white border border-white/30 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-600/60 transition shadow-xl flex items-center gap-2 justify-center">
+                <a href="#registreeri" class="bg-white text-indigo-700 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-indigo-50 transition-all hover:scale-105 shadow-2xl shadow-indigo-900/20">Registreeri siin</a>
+                <a href="https://docs.google.com/document/d/1hqLIVqfflw4a2zxmkZK0W4shnYkbegzB/edit?usp=drive_link&ouid=108559426715110697158&rtpof=true&sd=true" target="_blank" class="bg-indigo-600/40 text-white border border-white/30 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-600/60 transition shadow-xl flex items-center gap-2 justify-center backdrop-blur-sm">
                     Loe üldjuhendit
                 </a>
             </div>
@@ -109,7 +109,7 @@
         <section id="registreeri" class="max-w-4xl mx-auto mb-32">
             <div class="bg-white p-8 md:p-16 rounded-[3.5rem] shadow-2xl shadow-indigo-200/50 border border-slate-100">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl font-extrabold mb-4">Registreerimisvorm</h2>
+                    <h2 class="text-4xl font-extrabold mb-4 font-outfit">Registreerimisvorm</h2>
                     <p class="text-slate-500 text-lg mb-6">Täida ankeet ja pane oma talent proovile!</p>
                 </div>
                 
@@ -178,7 +178,7 @@
 
                     <div class="md:col-span-2 space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Saade ja vajalik lisatehnika *</label>
-                        <textarea name="accompaniment" id="field_accompaniment" rows="2" required placeholder="klaver, mitu mikrofoni jne" class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white"></textarea>
+                        <textarea name="accompaniment" id="field_accompaniment" rows="2" required placeholder="fono, klaver, mitu mikrofoni jne" class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white"></textarea>
                     </div>
 
                     <!-- Fonogrammi üleslaadimine -->
@@ -251,7 +251,7 @@
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 text-center md:text-left">
             <div class="space-y-8">
                 <div>
-                    <p class="text-white font-black text-2xl uppercase tracking-wider mb-2">Tartumaa laululaps 2026</p>
+                    <p class="text-white font-black text-2xl uppercase tracking-wider mb-2 font-outfit">Tartumaa laululaps 2026</p>
                     <p class="text-indigo-400 font-bold uppercase text-xs tracking-[0.2em]">Elva valla eelvoor</p>
                 </div>
                 <div class="space-y-4">
@@ -289,7 +289,7 @@
     </footer>
 
     <script>
-        // See on Sinu uue Deploymenti URL:
+        // Sinu viimane kinnitatud Deployment URL:
         const scriptURL = 'https://script.google.com/macros/s/AKfycby7EHGNIxvGTsdtfWVD_jZjl3dJSn_21XbEijn_kNhsARW_TGW9NkNTFFzYfxQJTcUheQ/exec';
 
         const form = document.getElementById('googleSheetForm');
@@ -314,7 +314,7 @@
             const data = Object.fromEntries(formData.entries());
             lastSubmittedData = { ...data };
 
-            // Faili töötlemine
+            // Faili töötlemine (Base64)
             if (audioInput.files.length > 0) {
                 const file = audioInput.files[0];
                 if (file.size > 10 * 1024 * 1024) {
@@ -341,7 +341,7 @@
             })
             .catch(error => {
                 console.error('Viga!', error.message);
-                alert('Viga andmete saatmisel. Kontrolli ühendust.');
+                alert('Viga andmete saatmisel. Kontrolli ühendust või proovi uuesti.');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Kinnita registreerimine';
             });
@@ -356,7 +356,7 @@
 
         // "Sama juhendaja, uus õpilane" loogika
         regNextSameTeacherBtn.addEventListener('click', () => {
-            // Tühjendame ainult õpilase ja laulu väljad, JÄTAME juhendaja ja kooli
+            // Tühjendame ainult õpilase ja laulu väljad, JÄTAME juhendaja ja asutuse alles
             const fieldsToClear = [
                 'field_name', 'field_birthdate', 'field_ageGroup', 
                 'field_song', 'field_author', 'field_duration', 
@@ -394,7 +394,7 @@
 
             doc.setTextColor(40, 40, 40);
             doc.setFontSize(10);
-            doc.text(`Kinnituse aeg: ${new Date().toLocaleString('et-EE')}`, 20, 50);
+            doc.text(`Kinnituse väljastamise aeg: ${new Date().toLocaleString('et-EE')}`, 20, 50);
 
             let y = 65;
             const drawRow = (label, value) => {
@@ -410,7 +410,7 @@
             doc.text("1. OSALEJA ANDMED", 20, y);
             y += 10;
             doc.setFontSize(11);
-            drawRow("Nimi", data.name);
+            drawRow("Laulja nimi", data.name);
             drawRow("Sünniaeg", data.birthdate);
             drawRow("Vanuserühm", data.ageGroup);
             drawRow("Asutus", data.school);
