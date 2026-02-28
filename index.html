@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tartumaa laululaps 2026 - Elva valla eelvoor</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -41,7 +42,7 @@
     <header class="relative pt-24 pb-32 overflow-hidden">
         <div class="absolute inset-0 hero-gradient -skew-y-3 origin-top-left -z-10 h-[115%] shadow-2xl"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative">
-            <div class="mb-10 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase border border-white/20">
+            <div class="mb-10 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase border border-white/20">
                 <span class="w-2 h-2 bg-pink-400 rounded-full animate-ping"></span>
                 Elva valla piirkondlik eelvoor
             </div>
@@ -217,7 +218,14 @@
                     </div>
                     <h3 class="text-3xl font-extrabold text-slate-900">Registreeritud!</h3>
                     <p class="text-slate-600 text-lg max-w-md mx-auto leading-relaxed">Suur aitäh! Sinu andmed ja fail on edukalt edastatud Sinu Google Sheetsi ja Drive'i.</p>
-                    <button onclick="location.reload()" class="bg-indigo-50 text-indigo-700 px-8 py-3 rounded-full font-bold hover:bg-indigo-100 transition shadow-sm">Registreeri järgmine osaleja</button>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                        <button id="downloadPdfBtn" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:bg-indigo-700 transition shadow-md flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            Laadi alla PDF kinnitus
+                        </button>
+                        <button onclick="location.reload()" class="bg-slate-100 text-slate-700 px-8 py-3 rounded-full font-bold hover:bg-slate-200 transition">Registreeri järgmine</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -263,7 +271,10 @@
         const form = document.getElementById('googleSheetForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMsg = document.getElementById('successMsg');
+        const downloadPdfBtn = document.getElementById('downloadPdfBtn');
         const audioInput = document.getElementById('audioFile');
+
+        let lastSubmittedData = null;
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -276,6 +287,7 @@
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
+            lastSubmittedData = { ...data }; // Salvestame PDF-i jaoks
 
             // Faili töötlemine (Base64)
             if (audioInput.files.length > 0) {
@@ -315,6 +327,77 @@
             reader.readAsDataURL(file);
             reader.onload = () => resolve(reader.result);
             reader.onerror = error => reject(error);
+        });
+
+        // PDF Genereerimine
+        downloadPdfBtn.addEventListener('click', () => {
+            if (!lastSubmittedData) return;
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const data = lastSubmittedData;
+
+            // Kujundus
+            doc.setFillColor(79, 70, 229); // Indigo värv
+            doc.rect(0, 0, 210, 40, 'F');
+            
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(22);
+            doc.text("REGISTREERIMISE KINNITUS", 105, 20, { align: "center" });
+            doc.setFontSize(12);
+            doc.text("Tartumaa laululaps 2026 - Elva valla eelvoor", 105, 30, { align: "center" });
+
+            doc.setTextColor(40, 40, 40);
+            doc.setFontSize(10);
+            doc.text(`Kuupäev: ${new Date().toLocaleDateString('et-EE')}`, 20, 50);
+
+            // Andmete sektsioonid
+            let y = 65;
+            const drawRow = (label, value) => {
+                doc.setFont("helvetica", "bold");
+                doc.text(`${label}:`, 20, y);
+                doc.setFont("helvetica", "normal");
+                doc.text(String(value || '-'), 70, y);
+                y += 10;
+            };
+
+            doc.setFontSize(14);
+            doc.setFont("helvetica", "bold");
+            doc.text("1. OSALEJA ANDMED", 20, y);
+            y += 10;
+            doc.setFontSize(11);
+            drawRow("Nimi", data.name);
+            drawRow("Sünniaeg", data.birthdate);
+            drawRow("Vanuserühm", data.ageGroup);
+            drawRow("Asutus", data.school);
+
+            y += 10;
+            doc.setFontSize(14);
+            doc.setFont("helvetica", "bold");
+            doc.text("2. ESITUSE ANDMED", 20, y);
+            y += 10;
+            doc.setFontSize(11);
+            drawRow("Laulu pealkiri", data.song);
+            drawRow("Autorid", data.author);
+            drawRow("Pikkus", data.duration);
+            drawRow("Taustalauljad", data.backupSingers);
+            drawRow("Saade/Tehnika", data.accompaniment);
+
+            y += 10;
+            doc.setFontSize(14);
+            doc.setFont("helvetica", "bold");
+            doc.text("3. JUHENDAJA ANDMED", 20, y);
+            y += 10;
+            doc.setFontSize(11);
+            drawRow("Nimi", data.teacherName);
+            drawRow("Kontakt", data.teacherContact);
+
+            y += 20;
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            doc.text("Kohtume 29. märtsil Konguta rahvamajas!", 105, y, { align: "center" });
+
+            doc.save(`Registreerimine_${data.name.replace(/\s+/g, '_')}.pdf`);
         });
     </script>
 </body>
