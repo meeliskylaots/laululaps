@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tartumaa laululaps 2026 - Elva valla eelvoor</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jsPDF teek PDF-i tegemiseks -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -47,16 +48,16 @@
                 Elva valla piirkondlik eelvoor
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight text-white">
                 Hea noor solist!<br>
                 <span class="text-indigo-200">Ära hoia oma laulurõõmu tagasi</span>
             </h1>
 
             <div class="max-w-2xl mx-auto bg-white/10 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/20 shadow-2xl mb-12">
                 <p class="text-xl md:text-2xl mb-4 font-semibold text-white">Tule "Tartumaa laululaps 2026" eelvoorule!</p>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-indigo-100">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-indigo-100 font-medium">
                     <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                         <span>29. märts 2026</span>
                     </div>
                     <div class="flex items-center gap-2">
@@ -85,19 +86,19 @@
         <!-- Info paneelid -->
         <section class="grid md:grid-cols-3 gap-8 mb-24">
             <div class="glass-card p-10 rounded-[2.5rem] shadow-xl border-t-4 border-t-indigo-500 hover:transform hover:-translate-y-2 transition-all">
-                <h3 class="text-xl font-bold mb-4 text-indigo-600">Ajakava ja järjekord</h3>
+                <h3 class="text-xl font-bold mb-4 text-indigo-600 uppercase tracking-tight">Ajakava ja järjekord</h3>
                 <p class="text-slate-600 leading-relaxed text-sm">
                     Ajakava avalikustatakse hiljemalt <strong>25.03.2026</strong> Konguta Rahvamaja Facebookis ja <a href="https://www.elvakultuur.ee" class="text-indigo-600 hover:underline">elvakultuur.ee</a> lehel.
                 </p>
             </div>
             <div class="glass-card p-10 rounded-[2.5rem] shadow-xl border-t-4 border-t-purple-500 hover:transform hover:-translate-y-2 transition-all">
-                <h3 class="text-xl font-bold mb-4 text-purple-600">Registreerimine</h3>
+                <h3 class="text-xl font-bold mb-4 text-purple-600 uppercase tracking-tight">Registreerimine</h3>
                 <p class="text-slate-600 leading-relaxed text-sm">
                     Ankeedi täitmine on avatud kuni <strong>20. märtsini</strong>. Vanust arvestatakse seisuga <strong>31.12.2026</strong>. Kõik väljad on kohustuslikud.
                 </p>
             </div>
             <div class="glass-card p-10 rounded-[2.5rem] shadow-xl border-t-4 border-t-pink-500 hover:transform hover:-translate-y-2 transition-all">
-                <h3 class="text-xl font-bold mb-4 text-pink-600">Edasipääs</h3>
+                <h3 class="text-xl font-bold mb-4 text-pink-600 uppercase tracking-tight">Edasipääs</h3>
                 <p class="text-slate-600 leading-relaxed text-sm">
                     Igast vanuserühmast pääseb kaks parimat Tartumaa laululaps 2026 maakondlikku lõppvooru, mis toimub mais 2026.
                 </p>
@@ -123,17 +124,17 @@
                     
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Laulja nimi *</label>
-                        <input type="text" name="name" id="field_name" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all">
+                        <input type="text" name="name" id="field_name" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
                     
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Sünniaeg (pp.kk.aaaa) *</label>
-                        <input type="text" name="birthdate" id="field_birthdate" placeholder="01.01.2015" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="birthdate" id="field_birthdate" placeholder="01.01.2015" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Vanuserühm (seisuga 31.12.2026) *</label>
-                        <select name="ageGroup" id="field_ageGroup" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <select name="ageGroup" id="field_ageGroup" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white">
                             <option value="">Vali...</option>
                             <option value="I rühm (3-7 a.)">I grupp: 3–7-aastased</option>
                             <option value="II rühm (8-10 a.)">II grupp: 8–10-aastased</option>
@@ -144,7 +145,7 @@
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Keda esindad (kool/stuudio) *</label>
-                        <input type="text" name="school" id="field_school" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="school" id="field_school" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
 
                     <!-- Osa 2: Laul -->
@@ -157,34 +158,34 @@
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Laulu pealkiri *</label>
-                        <input type="text" name="song" id="field_song" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="song" id="field_song" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Laulu autorid *</label>
-                        <input type="text" name="author" id="field_author" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="author" id="field_author" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Laulu täpne pikkus *</label>
-                        <input type="text" name="duration" id="field_duration" placeholder="nt 2:50" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="duration" id="field_duration" placeholder="nt 2:50" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Taustalauljad (nimed ja arv) *</label>
-                        <input type="text" name="backupSingers" id="field_backupSingers" placeholder="või 'Puuduvad'" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="backupSingers" id="field_backupSingers" placeholder="või 'Puuduvad'" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
 
                     <div class="md:col-span-2 space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Saade ja vajalik lisatehnika *</label>
-                        <textarea name="accompaniment" id="field_accompaniment" rows="2" required placeholder="klaver, mitu mikrofoni jne" class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all"></textarea>
+                        <textarea name="accompaniment" id="field_accompaniment" rows="2" required placeholder="klaver, mitu mikrofoni jne" class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white"></textarea>
                     </div>
 
                     <!-- Fonogrammi üleslaadimine -->
-                    <div class="md:col-span-2 bg-indigo-50/50 p-6 rounded-3xl border-2 border-dashed border-indigo-200">
-                        <label class="block text-sm font-bold text-indigo-900 mb-2">Fonogrammi üleslaadimine (vabatahtlik)</label>
-                        <p class="text-xs text-indigo-600 mb-4">Kui kasutad fonogrammi, võid selle siia üles laadida (MP3, max 10MB). Võid selle tuua ka mälupulgal kohapeale.</p>
-                        <input type="file" id="audioFile" accept="audio/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-3 file:px-6 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 transition-all cursor-pointer">
+                    <div class="md:col-span-2 bg-indigo-50/50 p-8 rounded-[2rem] border-2 border-dashed border-indigo-200">
+                        <label class="block text-sm font-extrabold text-indigo-900 mb-2">Fonogrammi üleslaadimine (vabatahtlik)</label>
+                        <p class="text-xs text-indigo-600 mb-4 font-medium italic">Kui kasutad fonogrammi, võid selle siia üles laadida (MP3, max 10MB). Võid selle tuua ka mälupulgal kohapeale.</p>
+                        <input type="file" id="audioFile" accept="audio/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-3 file:px-8 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 transition-all cursor-pointer">
                     </div>
 
                     <!-- Osa 3: Juhendaja -->
@@ -197,12 +198,12 @@
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Juhendaja nimi *</label>
-                        <input type="text" name="teacherName" id="field_teacherName" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="teacherName" id="field_teacherName" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-slate-700 ml-1">Juhendaja kontakt (tel, e-post) *</label>
-                        <input type="text" name="teacherContact" id="field_teacherContact" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all">
+                        <input type="text" name="teacherContact" id="field_teacherContact" required class="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none transition-all bg-slate-50 focus:bg-white">
                     </div>
 
                     <div class="md:col-span-2 pt-8">
@@ -212,27 +213,31 @@
                     </div>
                 </form>
 
-                <div id="successMsg" class="hidden text-center py-16 space-y-6">
+                <div id="successMsg" class="hidden text-center py-16 space-y-8">
                     <div class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 scale-110">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </div>
-                    <h3 class="text-3xl font-extrabold text-slate-900">Registreeritud!</h3>
-                    <p class="text-slate-600 text-lg max-w-md mx-auto leading-relaxed">Suur aitäh! Sinu andmed ja fail on edukalt edastatud Sinu Google Sheetsi ja Drive'i.</p>
+                    <div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 mb-2">Registreeritud!</h3>
+                        <p class="text-slate-600 text-lg max-w-md mx-auto leading-relaxed font-medium">Suur aitäh! Sinu andmed ja fail on edukalt edastatud Sinu Google Sheetsi ja Drive'i.</p>
+                    </div>
                     
                     <div class="flex flex-col gap-4 justify-center pt-4 max-w-sm mx-auto">
-                        <button id="downloadPdfBtn" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-700 transition shadow-md flex items-center justify-center gap-2">
+                        <!-- PDF NUPP -->
+                        <button id="downloadPdfBtn" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-700 transition shadow-md flex items-center justify-center gap-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                             Laadi alla PDF kinnitus
                         </button>
                         
                         <div class="h-px bg-slate-100 my-2"></div>
                         
-                        <button id="regNextSameTeacher" class="bg-indigo-50 text-indigo-700 px-8 py-4 rounded-2xl font-bold hover:bg-indigo-100 transition border border-indigo-100 flex items-center justify-center gap-2">
+                        <!-- SAMA JUHENDAJA NUPP -->
+                        <button id="regNextSameTeacher" class="bg-indigo-50 text-indigo-700 px-8 py-4 rounded-2xl font-bold hover:bg-indigo-100 transition border border-indigo-100 flex items-center justify-center gap-3">
                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-                             Lisa samale juhendajale uus õpilane
+                             Sama juhendaja, uus õpilane
                         </button>
                         
-                        <button onclick="location.reload()" class="text-slate-500 hover:text-slate-700 text-sm font-medium transition py-2">
+                        <button onclick="location.reload()" class="bg-white text-slate-500 border border-slate-200 px-8 py-4 rounded-2xl font-bold hover:bg-slate-50 transition flex items-center justify-center gap-2">
                              Alusta täiesti uut registreerimist
                         </button>
                     </div>
@@ -251,11 +256,19 @@
                 </div>
                 <div class="space-y-4">
                     <p class="text-indigo-200 font-bold text-sm tracking-widest uppercase">Eelvooru korraldaja:</p>
-                    <p class="text-white font-extrabold text-lg">Meelis Külaots</p>
-                    <p class="text-sm">Konguta rahvamaja juhataja</p>
+                    <div class="space-y-1">
+                        <p class="text-white font-extrabold text-lg">Meelis Külaots</p>
+                        <p class="text-sm">Konguta rahvamaja juhataja</p>
+                    </div>
                     <div class="flex flex-col gap-3 pt-2 items-center md:items-start">
-                        <a href="tel:5259576" class="hover:text-white transition">5259576</a>
-                        <a href="mailto:konguta.rahvamaja@elva.ee" class="hover:text-white transition">konguta.rahvamaja@elva.ee</a>
+                        <a href="tel:5259576" class="hover:text-white transition flex items-center gap-2">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            5259576
+                        </a>
+                        <a href="mailto:konguta.rahvamaja@elva.ee" class="hover:text-white transition flex items-center gap-2">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            konguta.rahvamaja@elva.ee
+                        </a>
                     </div>
                 </div>
             </div>
@@ -263,8 +276,9 @@
                 <div class="space-y-6 md:text-right">
                     <p class="text-indigo-200 font-bold text-sm tracking-widest uppercase mb-4">Lingid ja info:</p>
                     <div class="flex flex-col gap-3">
-                        <a href="https://www.elvakultuur.ee" target="_blank" class="hover:text-white transition-colors">elvakultuur.ee</a>
-                        <a href="https://www.facebook.com/kongutarahvamaja" target="_blank" class="hover:text-white transition-colors">Konguta Rahvamaja Facebook</a>
+                        <a href="https://www.elvakultuur.ee" target="_blank" class="hover:text-white transition-colors font-medium">elvakultuur.ee</a>
+                        <a href="https://www.facebook.com/kongutarahvamaja" target="_blank" class="hover:text-white transition-colors font-medium">Konguta Rahvamaja Facebook</a>
+                        <a href="https://docs.google.com/document/d/1hqLIVqfflw4a2zxmkZK0W4shnYkbegzB/edit?usp=drive_link&ouid=108559426715110697158&rtpof=true&sd=true" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors font-bold">Võistluse üldjuhend</a>
                     </div>
                 </div>
                 <div class="pt-12 text-[10px] text-slate-600 uppercase tracking-[0.3em]">
@@ -275,7 +289,7 @@
     </footer>
 
     <script>
-        // Sinu aktiivne Google Apps Script URL
+        // See on Sinu uue Deploymenti URL:
         const scriptURL = 'https://script.google.com/macros/s/AKfycby7EHGNIxvGTsdtfWVD_jZjl3dJSn_21XbEijn_kNhsARW_TGW9NkNTFFzYfxQJTcUheQ/exec';
 
         const form = document.getElementById('googleSheetForm');
@@ -293,13 +307,14 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = `
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                Saadan andmeid ja faili...
+                Saadan andmeid...
             `;
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
             lastSubmittedData = { ...data };
 
+            // Faili töötlemine
             if (audioInput.files.length > 0) {
                 const file = audioInput.files[0];
                 if (file.size > 10 * 1024 * 1024) {
@@ -326,7 +341,7 @@
             })
             .catch(error => {
                 console.error('Viga!', error.message);
-                alert('Viga andmete saatmisel.');
+                alert('Viga andmete saatmisel. Kontrolli ühendust.');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Kinnita registreerimine';
             });
@@ -339,9 +354,9 @@
             reader.onerror = error => reject(error);
         });
 
-        // "Lisa samale juhendajale uus õpilane" loogika
+        // "Sama juhendaja, uus õpilane" loogika
         regNextSameTeacherBtn.addEventListener('click', () => {
-            // Tühjendame ainult õpilase ja laulu väljad
+            // Tühjendame ainult õpilase ja laulu väljad, JÄTAME juhendaja ja kooli
             const fieldsToClear = [
                 'field_name', 'field_birthdate', 'field_ageGroup', 
                 'field_song', 'field_author', 'field_duration', 
@@ -352,21 +367,15 @@
                 document.getElementById(id).value = '';
             });
             
-            // Tühjendame failivaliku
             audioInput.value = '';
-            
-            // Peidame eduteate ja näitame vormi
             successMsg.classList.add('hidden');
             form.classList.remove('hidden');
-            
-            // Taastame nupu oleku
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Kinnita registreerimine';
-            
-            // Kerime vormi algusesse
             window.scrollTo({ top: document.getElementById('registreeri').offsetTop - 100, behavior: 'smooth' });
         });
 
+        // PDF Funktsionaalsus
         downloadPdfBtn.addEventListener('click', () => {
             if (!lastSubmittedData) return;
 
@@ -374,9 +383,9 @@
             const doc = new jsPDF();
             const data = lastSubmittedData;
 
+            // Päis
             doc.setFillColor(79, 70, 229);
             doc.rect(0, 0, 210, 40, 'F');
-            
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(22);
             doc.text("REGISTREERIMISE KINNITUS", 105, 20, { align: "center" });
@@ -385,14 +394,14 @@
 
             doc.setTextColor(40, 40, 40);
             doc.setFontSize(10);
-            doc.text(`Kuupäev: ${new Date().toLocaleDateString('et-EE')}`, 20, 50);
+            doc.text(`Kinnituse aeg: ${new Date().toLocaleString('et-EE')}`, 20, 50);
 
             let y = 65;
             const drawRow = (label, value) => {
                 doc.setFont("helvetica", "bold");
                 doc.text(`${label}:`, 20, y);
                 doc.setFont("helvetica", "normal");
-                doc.text(String(value || '-'), 70, y);
+                doc.text(String(value || '-'), 75, y);
                 y += 10;
             };
 
@@ -424,7 +433,7 @@
             doc.text("3. JUHENDAJA ANDMED", 20, y);
             y += 10;
             doc.setFontSize(11);
-            drawRow("Nimi", data.teacherName);
+            drawRow("Juhendaja nimi", data.teacherName);
             drawRow("Kontakt", data.teacherContact);
 
             y += 20;
