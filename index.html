@@ -56,7 +56,7 @@
                 <p class="text-xl md:text-2xl mb-4 font-semibold text-white">Tule "Tartumaa laululaps 2026" eelvoorule!</p>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-indigo-100">
                     <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" /></svg>
                         <span>29. märts 2026</span>
                     </div>
                     <div class="flex items-center gap-2">
@@ -265,7 +265,6 @@
     </footer>
 
     <script>
-        // Sinu aktiivne Google Apps Script URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycby7EHGNIxvGTsdtfWVD_jZjl3dJSn_21XbEijn_kNhsARW_TGW9NkNTFFzYfxQJTcUheQ/exec';
 
         const form = document.getElementById('googleSheetForm');
@@ -287,9 +286,8 @@
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
-            lastSubmittedData = { ...data }; // Salvestame PDF-i jaoks
+            lastSubmittedData = { ...data };
 
-            // Faili töötlemine (Base64)
             if (audioInput.files.length > 0) {
                 const file = audioInput.files[0];
                 if (file.size > 10 * 1024 * 1024) {
@@ -329,7 +327,6 @@
             reader.onerror = error => reject(error);
         });
 
-        // PDF Genereerimine
         downloadPdfBtn.addEventListener('click', () => {
             if (!lastSubmittedData) return;
 
@@ -337,8 +334,7 @@
             const doc = new jsPDF();
             const data = lastSubmittedData;
 
-            // Kujundus
-            doc.setFillColor(79, 70, 229); // Indigo värv
+            doc.setFillColor(79, 70, 229);
             doc.rect(0, 0, 210, 40, 'F');
             
             doc.setTextColor(255, 255, 255);
@@ -351,7 +347,6 @@
             doc.setFontSize(10);
             doc.text(`Kuupäev: ${new Date().toLocaleDateString('et-EE')}`, 20, 50);
 
-            // Andmete sektsioonid
             let y = 65;
             const drawRow = (label, value) => {
                 doc.setFont("helvetica", "bold");
